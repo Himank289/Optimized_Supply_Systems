@@ -1,0 +1,49 @@
+{% extends "todo/base.html" %}
+
+{% block content %}
+
+ 
+ <head>
+</head>
+
+
+
+
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-4">
+                <div class="alert alert-warning" role="alert" style = "text-align: center;">
+                    <h3>Purchase Forecasting</h3>
+                </div>
+        </div>
+    </div>        
+
+
+    <div class="row" style="text-align: center; margin-bottom:15%; margin-left: 25%;">
+        <div class="col-sm-4" style="background-color: rgba(255, 203, 90, 0.623)">
+            <div class="card-header" style="background-color: rgb(253, 183, 52);margin-top: 4%;">
+             <h4><b>Product name</b></h4>
+            </div>
+            <ul class="list-group list-group-flush">   
+              {% for vi in data_information %} 
+                <li class="list-group-item"><b>{{vi.product_name}}</b></li>
+              {% endfor %}
+            </ul>
+        </div>
+
+
+      <div class="col-sm-4" style="background-color: rgba(255, 203, 90, 0.623)">
+          <div class="card-header" style="background-color: rgb(253, 183, 52);margin-top: 4%;">
+           <h4><b>Forecasted Qty </b></h4>
+          </div>
+          <ul class="list-group list-group-flush">       
+            {% for vi in data_information %} 
+              <li class="list-group-item"><b>{{vi.values}}</b></li>
+            {% endfor %}
+          </ul>
+      </div>
+            
+
+
+{% endblock %}
+
+

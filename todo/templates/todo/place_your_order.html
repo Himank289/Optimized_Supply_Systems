@@ -1,0 +1,91 @@
+{% extends "todo/base.html" %}
+
+{% block content %}
+
+
+
+
+<div class="card" style="width: 37rem; margin-inline: 25%; margin-top: 5%; background-color: rgb(253, 163, 60);">
+
+    <div class="row justify-content-center mt-5" style="margin-bottom: -5%;">
+        <div class="col-md-5">
+                <div class="warning" role="alert" >
+                    <h3 style="text-align: center; color: brown;"><b>Place Your Order</b></h3>
+                </div>
+        </div>
+    </div>
+
+
+    <div class="row justify-content-center mt-3">
+        <div class="col-md-5">
+            {% if error %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endif %}
+            <form method="POST">
+                {% csrf_token %}
+                <br>
+                <label for="papad_type" style="color: rgba(0, 0, 0, 0.858);"> <b>Papad Type:</b> &nbsp &nbsp &nbsp &nbsp</label>
+                <select id="papad_type" name="papad_type">
+                  <option value="spl-urad(100g)">Spl-Urad(100g)</option>
+                  <option value="spl-urad(200g)">Spl-Urad(200g)</option>
+                  <option value="spl-urad(1kg)">Spl-Urad(1kg)</option>
+                  <option value="plain-urad(100g)">Plain-Urad(100g)</option>
+                  <option value="plain-urad(200g)"> Plain-Urad(200g)</option>
+                  <option value="plain-urad(1kg)"> Plain-Urad(1kg)</option>
+                  <option value="urad-moong(100g)">Urad-Moong(100g)</option>
+                  <option value="urad-moong(200g)">Urad-Moong(200g)</option>
+                  <option value="urad-moong(1kg)">Urad-Moong(1kg)</option>
+                  <option value="garlic-green-chilli(100g)">Garlic-Green-Chilli(100g)</option>
+                  <option value="garlic-green-chilli(200g)"> Garlic-Green-Chilli(200g)</option>
+                  <option value="garlic-green-chilli(1kg)"> Garlic-Green-Chilli(1kg)</option>
+                  <option value="spl-green-chilli(100g)">Spl-Green-Chilli(100g)</option>
+                  <option value="spl-green-chilli(200g)">Spl-Green-Chilli(200g)</option>
+                  <option value="spl-green-chilli(1kg)">Spl-Green-Chilli(1kg)</option>
+                  <option value="spl-garlic(100g)">Spl-Garlic(100g)</option>
+                  <option value="spl-garlic(200g)"> Spl-Garlic(200g)</option>
+                  <option value="spl-garlic(1kg)">Spl-Garlic(1kg)</option>
+                  <option value="red-chilli(100g)">Red-Chilli(100g)</option>
+                  <option value="red-chilli(200g)">Red-Chilli(200g)</option>
+                  <option value="red-chilli(1kg)">Red-Chilli(1kg)</option>
+                  <option value="jeera(100g)">Jeera(100g)</option>
+                  <option value="jeera(200g)"> Jeera(200g)</option>
+                  <option value="jeera(1kg)"> Jeera(1kg)</option>
+                  <option value="spl-panjabi(100g)">Spl-Panjabi(100g)</option>
+                  <option value="spl-panjabi(200g)">Spl-Panjabi(200g)</option>
+                  <option value="spl-panjabi(1kg)">Spl-Panjabi(1kg)</option>
+                  <option value="chana-mix(100g)">Chana-Mix(100g)</option>
+                  <option value="chana-mix(200g)"> Chana-Mix(200g)</option>
+                  <option value="chana-mix(1kg)"> Chana-Mix(1kg)</option>
+                  <option value="whole-moong-papad(100g)">Whole-Moong(100g)</option>
+                  <option value="whole-moong-papad(200g)">Whole-Moong(200g)</option>
+                  <option value="whole-moong-papad(1kg)">Whole-Moong(1kg)</option>
+                  <option value="jain-papad(100g)">Jain(100g)</option>
+                  <option value="jain-papad(200g)"> Jain(200g)</option>
+                  <option value="jain-papad(1kg)"> Jain(1kg)</option>
+                  <option value="coin papad(1kg)"> Coin(1kg)</option>
+
+                </select>
+                <br>
+
+                <div class="form-group" style="padding-top: 7%;">
+                    <input type="number" name="quantity" class="form-control" id="quantity"  placeholder="Quantity (kg)" required >
+                </div>
+
+                <div class="form-group">
+                    <input type="text" name="comment" class="form-control" id="comment" placeholder="Comment" required>
+                </div>
+
+
+                <br>
+                <button type="submit" class="btn btn-warning">Place Order</button>
+            </form>
+
+            <hr>
+
+        </div>
+    </div>
+
+</div>
+{% endblock %}

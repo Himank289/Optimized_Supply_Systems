@@ -1,0 +1,81 @@
+{% extends "todo/base.html" %}
+
+{% block content %}
+{% load static %}
+
+<div class="row" style="background-color: rgba(255, 145, 71, 0.932); border-radius: 15%;">
+    <div class="col-sm-9">
+    <div class="card w-80" style="height:fit-content; margin-top: 5%; margin-bottom: 5%;border-radius: 10%; background-color:rgb(249, 252, 116);">
+        <div class="card-body">
+        <h3 class="card-title" style="text-align: center; padding-bottom: 3%; padding-top: 3%; color: crimson;"><b>About US</b></h3>
+        <p class="card-text" style="text-align: center;">
+            Food is part of our life & tasty food is every person's hobby. One of them Papad & Khakhara.
+            <br>
+            We introduce ourselves as manufacturer of various types of Papads since 1980. 
+            In our company we give top priority to the quality, 
+            process and product hygiene devised a complete automatic process. 
+            Our Papads are prepared from very high quality of pulses and spices with the state 
+            of the art technology under strict quality control to offer uniform shape, size thickness and traditional taste as well. 
+            The company has its own in-house grinding facility for pulses and spices. 
+            The excellent quality Papads are packed in specially designed food grade laminated pack. 
+            We manufacture machine made Papad & Khakhara. We made 15 types of Papads can be in size 2″ to 10″.
+            Our Papads are lab tested and insures totally hygienic condition.
+            <br>
+            It all began in 1980 when Mr. R. R Nahar who is founder 
+            and MD of the Company and having experience of 50 years in Papad manufacturing.
+            <br>
+            The business has expanded its wings in many state like Maharashtra, Karnataka, 
+            Uttar Pradesh, Zarkhand, Goa, Bhihar & even abroad to countries like New Zealand, 
+            Switzerland & Landon, Italy, Austria.
+            <br>
+        </p>
+        </div>
+    </div>
+    </div>
+
+    <div class="col-sm-3">
+        <div class="card" style="height:fit-content; margin-top: 25%;border-radius: 10%;">
+        <div class="card-body">
+        <img src="{% static 'img/nahar-1.jpg' %}" class="card-img-center" alt="managment-system-certificate-1" style="padding-top:10%; padding-bottom: 10%;">
+        </div>
+        </div>
+    </div>
+
+
+</div>
+
+<div style="margin-top: 6%;padding: 3%; text-align: center; background-color: rgb(250, 242, 130);">
+    <h2 style="color: darkred;">
+        <b>CERTIFICATES<b>
+    </h3>
+</div>
+
+    <div class="row" >
+        <div class="col-sm-4">
+          <div class="card" style="height: 470px; margin-top: 5%;margin-bottom: 5%; background-color: rgb(255, 215, 83);">
+            <div class="card-body">
+              <img src="{% static 'img/managment-system-certificate-1.jpg' %}" class="card-img-top" alt="managment-system-certificate-1" style="padding: -5%;">
+              <h5 class="card-title" style="padding-top: 20%;">Managment System Certificate</h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="card" style="height: 470px; margin-top: 5%;margin-bottom: 5%; background-color: rgb(250, 242, 130);">
+            <div class="card-body">
+              <img src="{% static 'img/iso-1.png' %}" class="card-img-top" alt=" iso mark">
+              <h5 class="card-title" style="padding-top: 10%;"> International Organization for Standardization (ISO)</h5>
+            </div>
+          </div>
+        </div>
+      <div class="col-sm-4">
+        <div class="card" style="height: 470px; margin-top: 5%;margin-bottom: 5%; background-color: rgb(255, 215, 83);">
+          <div class="card-body">
+            <img src="{% static 'img/apeda-1.jpg' %}" class="card-img-top" alt="apeda certificate">
+            <h5 class="card-title" style="padding-top: 10%;">Agricultural and Processed Food Products Export Development Authority (APEDA)</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,108 @@
+{% extends "todo/base.html" %}
+
+{% block content %}
+
+       {% if msg %}
+       <h3 style="text-align: center;padding: 2%;"><b>{{msg}}</b></h3>
+       {%else%}
+       {% if not placed_orders %}
+       <h3 style="text-align: center;padding: 2%;"><b>You have placed all the orders of your Distributors</b></h3>
+       {%else%}
+       <h3 style="text-align: center; padding: 2%;"><b>Pending Orders</b></h3>
+       {% endif %}
+       
+       
+       <div class="row" style="text-align: center; margin-left: 15%; margin-bottom:15%;">
+           <div class="col-sm-5">
+               {% for vi in placed_orders %}
+               <div class="card-header" style="background-color: rgb(253, 183, 52);margin-top: 4%;">
+                   <b>{{forloop.counter}}</b>
+               </div>
+               <ul class="list-group list-group-flush">
+                   
+                   <li class="list-group-item"><b>Order from Distributor</b></li>
+                   <li class="list-group-item"><b>Order Placement time</b></li>
+                   <li class="list-group-item"><b>Papad Type</b></li>
+                   <li class="list-group-item"><b>Quantity</b></li>
+                   <li class="list-group-item"><b>Comment</b></li>
+
+                   {% if not vi.acknowledgement %}
+                   <li class="list-group-item"><b>Give Acknowledgement to Retailer</b></li>
+                   
+                   {%else%}
+                   <li class="list-group-item"><b>Acknowledgement Status</b></li>
+                   {%endif%}
+                   
+
+                   {% if not vi.order_placed %}
+                   <li class="list-group-item" style="padding-bottom: 6.3%;"><b>Order Not placed</b></li>
+                   {%else%}
+                   <li class="list-group-item" style="padding-bottom: 6.3%;"><b>Order Status</b></li>
+                   {%endif%}
+               </ul>
+
+            {% endfor %}
+           </div>
+   
+
+
+       
+           <div class="col-sm-5">
+               {% for vi in placed_orders %}
+               <div class="card-header" style="background-color: rgb(253, 183, 52); margin-top: 4%;">
+                   <b>Information</b>
+               </div>
+               <ul class="list-group list-group-flush">
+                {% for ui in user_info2 %}
+                {% if vi.user_id == ui.id %}
+                   <li class="list-group-item">{{ui.username}}</li>
+                {%endif%}
+                {%endfor%}
+
+
+                   <li class="list-group-item">{{vi.date_time}}</li>
+                   <li class="list-group-item">{{vi.papad_type}}</li>
+                   <li class="list-group-item">{{vi.quantity}}</li>
+                   <li class="list-group-item">{{vi.comment}}</li>
+
+                   {% if not vi.acknowledgement %}
+                   <li class="list-group-item">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <input type = "hidden" name = "Acknowledge"  value = "{{ vi.id }}" />
+                        <input type="submit" class="btn btn-danger" value="Acknowledge"></button>
+                    </form>
+                    </li>
+                    {%else%}
+                   <li class="list-group-item">Acknowledged</li>
+                   {%endif%}
+
+
+                   {% if not vi.order_placed %}
+                   <li class="list-group-item">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <input type = "hidden" name = "place_order"  value = "{{ vi.id }}" />
+                        <input type="submit" class="btn btn-success" value="Place Order"></button>
+                    </form>
+                   </li>
+                   {%else%}
+                   <li class="list-group-item" style="margin-bottom: 3.2%;"><b>Order Placed</b></li>
+                   {%endif%}
+
+               </ul>
+               {%endfor%}
+           </div>
+       </div>
+{% endif %}
+
+
+
+
+
+
+
+
+{% endblock %}
+
+

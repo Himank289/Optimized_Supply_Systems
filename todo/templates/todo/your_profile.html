@@ -1,0 +1,104 @@
+{% extends "todo/base.html" %}
+
+{% block content %}
+
+<head>
+    <style>
+        .blink-bg{
+                color: #fff;
+                padding: 10px;
+                display: inline-block;
+                border-radius: 5px;
+                animation: blinkingBackground 4s infinite;
+                    }
+            @keyframes blinkingBackground{
+                0%		{ background-color: #10c018;}
+                25%		{ background-color: #1056c0;}
+                50%		{ background-color: #ef0a1a;}
+                75%		{ background-color: #254878;}
+                100%	{ background-color: #04a1d5;}
+                }        
+
+            .blink-bg2{
+                color: #fff;
+                padding: 10px;
+                display: inline-block;
+                border-radius: 5px;
+                animation: blinkingBackground2 2s infinite;
+                    }
+            @keyframes blinkingBackground2{
+                0%		{ background-color: #254878;}
+                25%	    { background-color: #04a1d5;}
+                50%		{ background-color: #10c018;}
+                75%		{ background-color: #1056c0;}
+                100%	{ background-color: #ef0a1a;}
+                }      
+    </style>
+</head>
+
+    <div style="padding: 3%; text-align: center; ">
+        <h3><i> You Can Grab This Best-Selling Item From Us: </i></h3>  
+        <div class="blink-bg"><h3><b>!!  {{predicted_y}}  !!</b></h3></div>
+    </div>
+
+
+    <div class="row" style="text-align: center; margin-left: 17%;">
+    <div class="col-sm-5" style="background-color: rgba(255, 203, 90, 0.623);padding-bottom:3%;" >
+        <div class="card-header" style="background-color: rgb(253, 183, 52);margin-top: 5%;" >
+           <b> Firm Name </b>
+          </div>
+          <ul class="list-group list-group-flush">
+            {% for ui in user_info %}
+            <li class="list-group-item"><b>Proprietor Name</b></li>
+            <li class="list-group-item"><b>Role</b></li>
+
+            {% if ui.role == "Retailer" %}
+            <li class="list-group-item"><b>Your assigned Distributor</b></li>
+            {% endif%}
+
+            <li class="list-group-item"><b>Address</b></li>
+            <li class="list-group-item"><b>Mobile Number</b></li>
+            <li class="list-group-item"><b>Email ID</b></li>
+            
+            {% if not ui.verified %}
+            <li class="list-group-item"><b>Verification</b></li>
+            {% endif %}
+            {% endfor %}
+
+
+          </ul>
+    </div>
+
+    <div class="col-sm-5" style="background-color: rgba(255, 203, 90, 0.623);padding-bottom:3%;" >
+        <div class="card-header" style="background-color: rgb(253, 183, 52);margin-top: 5%;">
+          <b>  {{user.username}} </b>
+          </div>
+          <ul class="list-group list-group-flush">
+            {% for ui in user_info %}
+            <li class="list-group-item">{{ui.Proprietor_name}}</li>
+            <li class="list-group-item">{{ui.role}}</li>
+
+            {% if ui.role == "Retailer" %}
+            {% if ui.verified %}
+            <li class="list-group-item">{{ui.assigned_distributor}}</li>
+            {% else %}
+            <li class="list-group-item"><b> Not assigned yet </b></li>
+            {% endif %}  
+            {% endif%}
+
+            <li class="list-group-item">{{ui.Address}}</li>
+            <li class="list-group-item">{{ui.Mobile_Number}}</li>
+            <li class="list-group-item">{{ui.Email_ID}}</li>
+
+            {% if not ui.verified %}
+            <li class="list-group-item"><b> Not Verified </b></li>
+            {% endif %}
+            {% endfor %}
+
+          </ul>
+    </div>
+    </div>
+
+{% endblock %}
+
+

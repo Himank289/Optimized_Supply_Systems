@@ -1,0 +1,57 @@
+{% extends "todo/base.html" %}
+
+{% block content %}
+{% load static %}
+
+
+
+<div style="padding-top:3%;">
+    
+    <h2 style="text-align: center; color: darkgreen;">
+        <b>OUR PACKAGINGS</b>
+    </h2>
+
+</div>
+
+
+<div>   
+    
+    <div class="w3-content w3-section" style="max-width:100%">
+        <img class="mySlides w3-animate-right" src="{% static 'img/papad-aata.jpg' %}" style="height:460px;width: 500px;margin-inline: 28%;margin-top: 3%;">
+        <img class="mySlides w3-animate-right" src="{% static 'img/sai-papad.jpg' %}" style="height:460px;width:500px;margin-inline: 28%;margin-top: 3%;">
+        <img class="mySlides w3-animate-right" src="{% static 'img/saras-papad.jpg' %}" style="height:460px;width:500px;margin-inline:28%;margin-top: 3%;">
+        <img class="mySlides w3-animate-right" src="{% static 'img/deep-papad.jpg' %}" style="height:460px;width:500px;margin-inline: 28%;margin-top: 3%;">
+    </div>
+
+    <script>
+        var myIndex = 0;
+        carousel();
+        
+        function carousel() {
+          var i;
+          var x = document.getElementsByClassName("mySlides");
+          for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";  
+          }
+          myIndex++;
+          if (myIndex > x.length) {myIndex = 1}    
+          x[myIndex-1].style.display = "block";  
+          setTimeout(carousel, 1500);    
+        }
+    </script>
+    
+    <div style="margin-top:10%; margin-bottom: 5%;">
+        <h2 style="text-align:center; color: darkgreen;"><b>OUR PRODUCTS</b></h2>
+    </div>
+
+    <div class="col-sm-12">
+        <div class="card" style="border:none; background-color: rgb(136, 34, 34);">
+        <div class="card-body" >
+        <img src="{% static 'img/img4.jpeg' %}" class="card-img-top" alt="managment-system-certificate-1">
+        </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

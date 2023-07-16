@@ -1,0 +1,77 @@
+{% extends "todo/base.html" %}
+
+{% block content %}
+
+<div style="background-color: rgb(253, 163, 60); margin-inline: 22%; padding-bottom: 3%; padding-top: 3%; text-align: center;">
+
+
+    <div class="row justify-content-center mt-3">
+        <div class="col-md-5">
+            <h2>Registration</h2>
+        </div>
+    </div>
+    <hr>
+    <div class="row justify-content-center mt-3">
+        <div class="col-md-5">
+            {% if error %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endif %}
+            <form method="POST">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <input type="text" name="firm_name" class="form-control" id="firm_name" placeholder="Firm Name" required>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" name="proprietor_name" class="form-control" id="proprietor_name"  placeholder="Proprietor Name" required>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" name="Mobile_Number" class="form-control" id="Mobile_Number"  placeholder="Mobile Number" required  pattern="(?=.*\d).{10,}" title="Please enter valid 10 digit mobile number">
+                </div>
+
+                <div class="form-group">
+                    <input type="text" name="Email_ID" class="form-control" id="Email_ID"  placeholder="Email ID" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+                </div>
+
+                <div class="form-group">
+                    <input type="text" name="Address" class="form-control" id="Address"  placeholder="City" required >
+                </div>
+
+                <label for="role"> <h5><b>Select Your Role:</b></h5> &nbsp &nbsp &nbsp &nbsp</label>
+                <select id="role" name="role">
+                  <option value="Distributor">Distributor</option>
+                  <option value="Retailer">Retailer</option>
+                </select>
+
+
+                <div class="form-group" style="padding-top: 10%;">
+                    <input type="password" name="password1" class="form-control" id="password1" placeholder="Password" required >
+                    <!-- <input type="password" name="password1" class="form-control" id="password1" placeholder="Password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"> -->
+                </div>
+                
+                <div class="form-group">
+                    <input type="password" name="password2" class="form-control" id="password2" placeholder="Confirm Password" required >
+                    <!-- <input type="password" name="password2" class="form-control" id="password2" placeholder="Confirm Password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"> -->
+                </div>
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+
+            </form>
+            <hr>
+            <div class="text-center">
+                Do you already have an account? <a href="{% url 'loginuser' %}" style="color:rgb(255, 13, 13)">Login here</a>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+
+
+
+{% endblock %}

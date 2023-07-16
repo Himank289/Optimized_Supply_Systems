@@ -1,0 +1,59 @@
+{% extends "todo/base.html" %}
+
+{% block content %}
+
+{% if msg %}
+<h3 style="text-align: center;padding: 2%;"><b>{{msg}}</b></h3>
+{%else%}
+{% if not placed_orders %}
+<h3 style="text-align: center;padding: 2%;"><b>You have not order History</b></h3>
+{%else%}
+<h3 style="text-align: center; padding: 2%;"><b>Order History</b></h3>
+{% endif %}
+
+
+<div class="row" style="text-align: center; margin-left: 15%;">
+    <div class="col-sm-5" style="background-color: rgba(255, 203, 90, 0.623); ">
+        {% for vi in placed_orders %}
+        <div class="card-header" style="background-color: rgb(253, 183, 52);margin-top: 4%;">
+            <b>{{forloop.counter}}</b>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            <li class="list-group-item"><b>Order-Placement Time</b></li>
+            <li class="list-group-item"><b>Papad Type</b></li>
+            <li class="list-group-item"><b>Quantity</b></li>
+            <li class="list-group-item" style="margin-bottom: 4%;"><b>Order Status</b></li>
+            {% endfor %}
+        </ul>
+        
+        
+    </div>
+
+    <div class="col-sm-5" style="background-color: rgba(255, 203, 90, 0.623);">
+        {% for vi in placed_orders %}
+        <div class="card-header" style="background-color: rgb(253, 183, 52); margin-top: 4%;">
+            <b>Information</b>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">{{vi.date_time}}</li>
+            <li class="list-group-item">{{vi.papad_type}}</li>
+            <li class="list-group-item">{{vi.quantity}}</li>
+
+            {% if not vi.order_placed %}
+            <li class="list-group-item" style="margin-bottom: 4%;">Order Not Placed Yet</li>
+            {%else%}
+            <li class="list-group-item" style="margin-bottom: 4%;">Order Placed</li>
+            {%endif%}
+            {% endfor %}
+        </ul>
+        
+    </div>
+</div>
+{% endif %}
+
+
+
+
+
+{% endblock %}

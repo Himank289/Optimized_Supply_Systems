@@ -1,0 +1,38 @@
+{% extends "todo/base.html" %}
+
+{% block content %}
+
+
+<div style="background-color: rgb(253, 163, 60); margin-inline: 22%;">
+
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-5">
+            <h1 style="text-align: center; margin-top:10%;">Login Here</h1>
+        </div>
+    </div>
+    <hr>
+    <div class="row justify-content-center mt-5" style="text-align: center;">
+        <div class="col-md-5">
+            {% if error %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endif %}
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <input type="text" name="username" class="form-control" id="username" placeholder="Firm Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
+                </div>
+                <button type="submit" class="btn btn-primary"><h4>Login</h4></button>
+            </form>
+            <hr>
+            <div class="text-center" style="margin-bottom: 10%;">
+                Need an account? <a href="{% url 'signupuser' %}" style="color:rgb(255, 13, 13)">Sign Up here</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,136 @@
+{% extends "todo/base.html" %}
+
+{% block content %}
+
+        <html>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+            <body>
+            
+              <div class="row justify-content-center mt-5">
+                  <canvas id="myChart" style="height:80vh; width:80vw"></canvas>
+              </div>
+            
+            <script>
+            var xValues = {{ x|safe }};
+            var yValues = {{ y|safe }};
+            var barColors = [
+              "#b91d47",
+              "#00aba9",
+              "#2b5797",
+              "#e8c3b9",
+              "#1e7145",
+              "#007145",
+              "#1e0045",
+              "#1e7100",
+              "#1e0000",
+              "#b91d47",
+              "#00aba9",
+              "#2b5797",
+              "#e8c3b9",
+              "#1e7145",
+              "#007145",
+              "#1e0045",
+              "#1e7100",
+              "#1e0000",
+              "#b91d47",
+              "#00aba9",
+              "#2b5797",
+              "#e8c3b9",
+              "#1e7145",
+              "#007145",
+              "#1e0045",
+              "#1e7100",
+              "#1e0000",
+              "#e8c3b9",
+              "#1e7145",
+              "#007145",
+              "#1e0045",
+              "#1e7100",
+              "#1e0000",
+              "#1e7100",
+              "#1e0000"
+            ];
+            
+            new Chart("myChart", {
+              type: "pie",
+              data: {
+                labels: xValues,
+                datasets: [{
+                  backgroundColor: barColors,
+                  data: yValues
+                }]
+              },
+              options: {
+                title: {
+                  display: true,
+                  text: "Product Inventory"
+                }
+              }
+            });
+            </script>
+<br><br><br><br>
+
+            </body>
+            </html>
+           
+            
+
+
+             
+    <h3 style="text-align: center; padding: 2%;"><b>Raw Material Inventory Stock</b></h3>         
+    <div class="row" style="text-align: center; margin-bottom:15%;">
+        <div class="col-sm-3" style="background-color: rgba(255, 203, 90, 0.623)">
+            <div class="card-header" style="background-color: rgb(253, 183, 52);margin-top: 4%;">
+             <b>Sr. No.</b>
+            </div>
+            <ul class="list-group list-group-flush">   
+              {% for vi in Raw_inventry_info %} 
+                <li class="list-group-item"><b>{{forloop.counter}}</b></li>
+              {% endfor %}
+            </ul>
+        </div>
+
+
+      <div class="col-sm-3" style="background-color: rgba(255, 203, 90, 0.623)">
+          <div class="card-header" style="background-color: rgb(253, 183, 52);margin-top: 4%;">
+           <b>Product name</b>
+          </div>
+          <ul class="list-group list-group-flush">       
+            {% for vi in Raw_inventry_info %}
+              <li class="list-group-item"><b>{{vi.product_name}}</b></li>
+            {% endfor %}
+          </ul>
+      </div>
+
+
+
+    <div class="col-sm-3" style="background-color: rgba(255, 203, 90, 0.623)">
+        <div class="card-header" style="background-color: rgb(253, 183, 52);margin-top: 4%;">
+         <b>Actual Inventory</b>
+        </div>
+        <ul class="list-group list-group-flush">     
+          {% for vi in Raw_inventry_info %}
+            <li class="list-group-item"><b>{{vi.product_qty}} Kg</b></li>
+            {% endfor %}
+        </ul>
+    </div>
+
+
+ 
+  <div class="col-sm-3" style="background-color: rgba(255, 203, 90, 0.623)">
+      <div class="card-header" style="background-color: rgb(253, 183, 52);margin-top: 4%;">
+       <b>Prediction Result</b>
+      </div>
+      <ul class="list-group list-group-flush">    
+        {% for vi in Raw_inventry_info %}
+          <li class="list-group-item"><b>{{vi.comment}}</b></li>
+          {% endfor %}
+      </ul>
+  </div>
+
+
+
+
+{% endblock %}
+
+
